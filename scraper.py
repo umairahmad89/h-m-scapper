@@ -37,12 +37,7 @@ products_categories = [
 
 parent_link = 'https://www2.hm.com/en_us'
 additional_link = '?sort=stock&image-size=small&image=model&offset=0&page-size={}'
-f = open('./response.json','r')
 gender_spec_url = 'men/products'
-recommendations = json.load(f)
-user_attributes = recommendations['gender_height_bodytype']
-category_recommendations = recommendations['cats']['cats']
-category_names = list(category_recommendations.keys())
 # get the category from the keys
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
@@ -53,7 +48,7 @@ driver = webdriver.Chrome(options=options)
 products_links = {}
 
 
-for category in category_names:
+for category in categories:
     products_links[category] = []
     print(category)
     # create url for this category
